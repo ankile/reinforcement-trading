@@ -14,7 +14,7 @@ class DQNConv1D(nn.Module):
         self.conv = nn.Sequential(
             nn.Conv1d(in_channels=shape[0], out_channels=128, kernel_size=5),
             nn.ReLU(),
-            nn.Conv1d(in_channels=128, out_channels=128, kernel_size=55),
+            nn.Conv1d(in_channels=128, out_channels=128, kernel_size=5),
             nn.ReLU(),
         )
 
