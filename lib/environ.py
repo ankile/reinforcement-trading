@@ -1,3 +1,5 @@
+# Adapted from code from the book "Deep Reinforcement Learning" by Maxim Lapan
+
 import gym
 import gym.spaces
 from gym.utils import seeding
@@ -154,7 +156,7 @@ class State1D(State):
             res[9] = self._prices.ma10[self._offset - ofs : self._offset + 1]
             res[10] = self._prices.ma20[self._offset - ofs : self._offset + 1]
             res[11] = self._prices.ma50[self._offset - ofs : self._offset + 1]
-            
+
             dst = 12
         else:
             dst = 3
@@ -190,7 +192,6 @@ class StocksEnv(gym.Env):
             large=large,
         )
 
-
         self.action_space = gym.spaces.Discrete(n=len(Actions))
         self.observation_space = gym.spaces.Box(
             low=-np.inf, high=np.inf, shape=self._state.shape, dtype=np.float64
@@ -199,7 +200,7 @@ class StocksEnv(gym.Env):
         self.seed()
 
     def reset(self):
-        # make selection of the instrument and it's offset. Then reset the state
+        # Make selection of the instrument and it's offset. Then reset the state
         self._instrument = self.np_random.choice(list(self._prices.keys()))
         prices = self._prices[self._instrument]
         bars = self._state.bars_count

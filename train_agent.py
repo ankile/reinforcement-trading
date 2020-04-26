@@ -133,7 +133,6 @@ def train_agent(
         # As long as not enough data is in buffer, go to top again
         if len(buffer) < conf.REPLAY_INITIAL:
             continue
-        
 
         if eval_states is None:
             print("Initial buffer populated, start training")
@@ -168,9 +167,7 @@ def train_agent(
                 # Save full object for testing
                 torch.save(
                     net,
-                    os.path.join(
-                        saves_path, f"mean_val-{mean_val:.3f}-fullmodel.data"
-                    ),
+                    os.path.join(saves_path, f"mean_val-{mean_val:.3f}-fullmodel.data"),
                 )
 
         # Reset optimizer's gradients before optimization step
@@ -178,7 +175,11 @@ def train_agent(
         batch = buffer.sample(conf.BATCH_SIZE)
         # Calculate the loss
         loss_v = common.calc_loss(
-            batch, net, tgt_net.target_model, conf.GAMMA ** conf.REWARD_STEPS, device=device
+            batch,
+            net,
+            tgt_net.target_model,
+            conf.GAMMA ** conf.REWARD_STEPS,
+            device=device,
         )
         # Calculate the gradient
         loss_v.backward()
@@ -189,7 +190,7 @@ def train_agent(
         # Two networks in this manner should increase the agent's ability to converge
         if step_idx % conf.TARGET_NET_SYNC == 0:
             tgt_net.sync()
-        
+
         # Every 1 million steps, save model in case something happens
         # so we can resume training in that case
         if step_idx % conf.CHECKPOINT_EVERY_STEP == 0:
@@ -203,9 +204,7 @@ def train_agent(
                 },
                 os.path.join(saves_path, f"checkpoint-{idx}.data"),
             )
-            torch.save(
-                net, os.path.join(saves_path, f"fullmodel-{idx}.data"),
-            )
+            torch.save(net, os.path.join(saves_path, f"fullmodel-{idx}.data"))
 
     print("Training done")
 

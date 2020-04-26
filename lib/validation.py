@@ -1,16 +1,16 @@
+# Adapted from code from the book "Deep Reinforcement Learning" by Maxim Lapan
+
 import numpy as np
-
 import torch
-
 from lib import environ
 
 
 def validation_run(env, net, episodes=100, device="cpu", epsilon=0.02, comission=0.1):
     stats = {
-        'episode_reward': [],
-        'episode_steps': [],
-        'order_profits': [],
-        'order_steps': [],
+        "episode_reward": [],
+        "episode_steps": [],
+        "order_profits": [],
+        "order_steps": [],
     }
 
     for episode in range(episodes):
@@ -36,10 +36,12 @@ def validation_run(env, net, episodes=100, device="cpu", epsilon=0.02, comission
                 position = close_price
                 position_steps = 0
             elif action == environ.Actions.Close and position is not None:
-                profit = close_price - position - (close_price + position) * comission / 100
+                profit = (
+                    close_price - position - (close_price + position) * comission / 100
+                )
                 profit = 100.0 * profit / position
-                stats['order_profits'].append(profit)
-                stats['order_steps'].append(position_steps)
+                stats["order_profits"].append(profit)
+                stats["order_steps"].append(position_steps)
                 position = None
                 position_steps = None
 
@@ -50,13 +52,17 @@ def validation_run(env, net, episodes=100, device="cpu", epsilon=0.02, comission
                 position_steps += 1
             if done:
                 if position is not None:
-                    profit = close_price - position - (close_price + position) * comission / 100
+                    profit = (
+                        close_price
+                        - position
+                        - (close_price + position) * comission / 100
+                    )
                     profit = 100.0 * profit / position
-                    stats['order_profits'].append(profit)
-                    stats['order_steps'].append(position_steps)
+                    stats["order_profits"].append(profit)
+                    stats["order_steps"].append(position_steps)
                 break
 
-        stats['episode_reward'].append(total_reward)
-        stats['episode_steps'].append(episode_steps)
+        stats["episode_reward"].append(total_reward)
+        stats["episode_steps"].append(episode_steps)
 
-    return { key: np.mean(vals) for key, vals in stats.items() }
+    return {key: np.mean(vals) for key, vals in stats.items()}

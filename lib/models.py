@@ -26,13 +26,13 @@ class DQNConv1D(nn.Module):
         self.fc_val = nn.Sequential(
             nn.Linear(in_features=out_size, out_features=512),
             nn.ReLU(),
-            nn.Linear(in_features=512, out_features=1)
+            nn.Linear(in_features=512, out_features=1),
         )
         # The fully connected advantage network
         self.fc_adv = nn.Sequential(
             nn.Linear(in_features=out_size, out_features=512),
             nn.ReLU(),
-            nn.Linear(in_features=512, out_features=n_actions)
+            nn.Linear(in_features=512, out_features=n_actions),
         )
 
     def _get_out_size(self, shape):
@@ -51,7 +51,7 @@ class DQNConv1D(nn.Module):
 class DQNConv1DLarge1(nn.Module):
     def __init__(self, shape, n_actions):
         super().__init__()
-        
+
         # Define the convolutional layers
         self.conv = nn.Sequential(
             nn.Conv1d(in_channels=shape[0], out_channels=64, kernel_size=3, padding=1),
@@ -80,7 +80,7 @@ class DQNConv1DLarge1(nn.Module):
             nn.Linear(in_features=512, out_features=512),
             nn.ReLU(),
             nn.Dropout2d(),
-            nn.Linear(in_features=512, out_features=1)
+            nn.Linear(in_features=512, out_features=1),
         )
 
         # The fully connected advantage network
@@ -91,7 +91,7 @@ class DQNConv1DLarge1(nn.Module):
             nn.Linear(in_features=512, out_features=512),
             nn.ReLU(),
             nn.Dropout2d(),
-            nn.Linear(in_features=512, out_features=n_actions)
+            nn.Linear(in_features=512, out_features=n_actions),
         )
 
     def _get_conv_out(self, shape):
@@ -140,7 +140,7 @@ class DQNConv1DLarge2(nn.Module):
             nn.Linear(in_features=out_size, out_features=512),
             nn.ReLU(),
             nn.Dropout(),
-            nn.Linear(in_features=512, out_features=1)
+            nn.Linear(in_features=512, out_features=1),
         )
 
         # The fully connected advantage network
@@ -148,7 +148,7 @@ class DQNConv1DLarge2(nn.Module):
             nn.Linear(in_features=out_size, out_features=512),
             nn.ReLU(),
             nn.Dropout(),
-            nn.Linear(in_features=512, out_features=n_actions)
+            nn.Linear(in_features=512, out_features=n_actions),
         )
 
     def _get_conv_out(self, shape):

@@ -1,3 +1,4 @@
+# Adapted from code from the book "Deep Reinforcement Learning" by Maxim Lapan
 import sys
 import time
 import numpy as np
@@ -39,7 +40,7 @@ class RewardTracker:
         print(
             "%s: done %d games, mean reward %.3f, mean steps %.2f, speed %.2f f/s%s"
             % (
-                '{:,}'.format(frame).replace(',', ' '),
+                "{:,}".format(frame).replace(",", " "),
                 len(self.total_rewards) * self.group_rewards,
                 mean_reward,
                 mean_steps,
