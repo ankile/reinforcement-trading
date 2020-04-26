@@ -17,3 +17,7 @@ Install requirements
 
 Run the training file
 `python train_agent.py`
+
+### Notes
+
+The testing file is only available in a colab format
