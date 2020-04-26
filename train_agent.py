@@ -217,7 +217,7 @@ if __name__ == "__main__":
         "test-local-2",
         data_paths=conf.default_data_paths,
         validation_paths=conf.default_validation_paths,
-        model=models.DQNConv1DLarge1,
-        large=True,
+        model=models.DQNConv1D,
+        large=False,
         load_checkpoint=None,
     )
