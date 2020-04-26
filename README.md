@@ -1,6 +1,10 @@
 # Deep Q-Learning for Trading Cryptocurrencies
 
-### Setup
+### Running on colab
+
+Just open one of the training notebooks or the testing notebook and press the "Open in Colab"-button at the top to launch the code in Colab.
+
+### Running locally
 
 Create virtualenv
 `virtualenv .env -p <path to python binary to use>`
