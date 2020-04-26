@@ -1,6 +1,6 @@
 # Deep Q-Learning for Trading Cryptocurrencies
 
-### Running on colab
+### Running in colab
 
 Just open one of the training notebooks or the testing notebook and press the "Open in Colab"-button at the top to launch the code in Colab.
 
