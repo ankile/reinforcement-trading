@@ -20,7 +20,7 @@ Install requirements
 
 `pip install -r requirements.txt --no-deps`
 
-Run the training file
+Run the training file (and/or do desired changes before starting training)
 
 `python train_agent.py`
 
