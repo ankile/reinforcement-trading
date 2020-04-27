@@ -21,6 +21,7 @@ def train_agent(
     large=False,
     load_checkpoint=None,
     saves_path=None,
+    eps_steps=None,
 ):
     """
     Main function for training the agents
@@ -45,6 +46,7 @@ def train_agent(
     step_idx = 0
     eval_states = None
     best_mean_val = None
+    EPSILON_STEPS = eps_steps if eps_steps is not None else conf.EPSILON_STEPS
 
     # Use GPU if available, else fall back on CPU
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -127,7 +129,7 @@ def train_agent(
 
         # Get current epsilon for epsilon-greedy action-selection
         selector.epsilon = max(
-            conf.EPSILON_STOP, conf.EPSILON_START - step_idx / conf.EPSILON_STEPS
+            conf.EPSILON_STOP, conf.EPSILON_START - step_idx / EPSILON_STEPS
         )
 
         # Take a step and get rewards
@@ -224,5 +226,4 @@ if __name__ == "__main__":
         model=models.DQNConv1D,
         large=False,
         load_checkpoint=None,
-        saves_path=None,
     )
