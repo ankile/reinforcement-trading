@@ -10,7 +10,7 @@ Clone this repo to local computer. `cd` into the repo-folder.
 
 Create virtualenv
 
-`virtualenv .env -p <path to python binary to use>`
+`virtualenv .env -p <path to python binary to use>` e.g. `virtualenv .env -p python3`
 
 Enter virtualenv
 
