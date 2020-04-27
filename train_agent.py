@@ -53,6 +53,8 @@ def train_agent(
     # Set up the path to save the checkpoints to
     if saves_path is None:
         saves_path = os.path.join("saves", run_name)
+    else:
+        saves_path = os.path.join(saves_path, run_name)
 
     print(f"[Info] Saving to path: {saves_path}")
 
