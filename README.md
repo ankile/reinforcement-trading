@@ -6,16 +6,22 @@ Just open one of the training notebooks or the testing notebook and press the "O
 
 ### Running locally
 
+Clone this repo to local computer. `cd` into the repo-folder.
+
 Create virtualenv
+
 `virtualenv .env -p <path to python binary to use>`
 
 Enter virtualenv
+
 `source .env/bin/activate`
 
 Install requirements
+
 `pip install -r requirements.txt --no-deps`
 
 Run the training file
+
 `python train_agent.py`
 
 ### Notes
