@@ -20,6 +20,7 @@ def train_agent(
     model=models.DQNConv1D,
     large=False,
     load_checkpoint=None,
+    saves_path=None,
 ):
     """
     Main function for training the agents
@@ -50,7 +51,9 @@ def train_agent(
     print(f"[Info] Using device: {device}")
 
     # Set up the path to save the checkpoints to
-    saves_path = os.path.join("saves", run_name)
+    if saves_path is None:
+        saves_path = os.path.join("saves", run_name)
+
     print(f"[Info] Saving to path: {saves_path}")
 
     os.makedirs(saves_path, exist_ok=True)
@@ -219,4 +222,5 @@ if __name__ == "__main__":
         model=models.DQNConv1D,
         large=False,
         load_checkpoint=None,
+        saves_path=None,
     )
