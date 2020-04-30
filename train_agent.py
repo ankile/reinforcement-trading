@@ -105,7 +105,7 @@ def train_agent(
 
     # If a checkpoint is supplied to the function –> resume the training from there
     if load_checkpoint is not None:
-        state = torch.load(load_state)
+        state = torch.load(load_checkpoint)
         net.load_state_dict(state["model_state_dict"])
         optimizer.load_state_dict(state["optimizer_state_dict"])
         step_idx = state["step_idx"]
